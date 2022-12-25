@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'   // here we using the dispatch hook from react-redux => dispatch is used to dispathc the action to the state 
 import { add } from '../store/cartSlice'    // here we are importing the action which is reducer add
- import { fetchProducts } from '../store/productSlice'
+
 
 const Products = () => {
     const [products, setProducts] = useState([])
@@ -9,14 +9,13 @@ const Products = () => {
 
 
     useEffect(() => {
-         dispathch(fetchProducts())
-        // const fetchProducts = async () => {
-        //     const res = await fetch('https://fakestoreapi.com/products')
-        //     const data = await res.json()
-        //     console.log(data)
-        //     setProducts(data);
-        // }
-        // fetchProducts();
+        const fetchProducts = async () => {
+            const res = await fetch('https://fakestoreapi.com/products')
+            const data = await res.json()
+            console.log(data)
+            setProducts(data);
+        }
+        fetchProducts();
     }, [])
 
 
